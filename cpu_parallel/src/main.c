@@ -45,9 +45,16 @@ int main(int argc, char** argv) {
     }
 
     if (!input_path) {
-        printf("Su dung: ./dpc_aknn_cpu --input <X.csv>"
-               " [--labels <y.csv>] [--clusters <n>] [--k <k>]\n");
-        return 1;
+        input_path = DEFAULT_INPUT_FILE;
+        if (!labels_path) {
+            labels_path = DEFAULT_LABEL_FILE;
+        }
+        printf("[System] Khong co doi so dau vao. Su dung cau hinh mac dinh trong config.h:\n");
+        printf("         Data    : %s\n", input_path);
+        if (labels_path) {
+            printf("         Labels  : %s\n", labels_path);
+        }
+        printf("         Clusters: %d, K: %d\n\n", n_clusters, k_val);
     }
 
     io_ensure_output_dirs();

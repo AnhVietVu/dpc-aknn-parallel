@@ -1,3 +1,15 @@
+ifeq ($(OS),Windows_NT)
+    # Cấu hình dành cho Windows
+    EXE = .exe
+    RM = del /Q /F
+    CLEAN_CMD = $(RM) $(TARGET)$(EXE) output\labels\*.csv output\benchmarks\*.csv 2>NUL || exit 0
+else
+    # Cấu hình dành cho Linux
+    EXE =
+    RM = rm -f
+    CLEAN_CMD = $(RM) $(TARGET) *.exe output/labels/*.csv output/benchmarks/*.csv
+endif
+
 CC      = gcc
 CFLAGS  = -O3 -std=gnu99 -Wall -Wextra -fopenmp
 LIBS    = -lm
@@ -11,20 +23,12 @@ SRCS = $(SRCDIR)/main.c \
        $(SRCDIR)/io.c \
        $(SRCDIR)/metrics.c
 
-.PHONY: all clean run
+.PHONY: all clean
 
-all: $(TARGET)
+all: $(TARGET)$(EXE)
 
-$(TARGET): $(SRCS)
+$(TARGET)$(EXE): $(SRCS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
-# Ví dụ chạy với Fashion-MNIST (có ground-truth để tính metric):
-run: $(TARGET)
-	./$(TARGET) \
-	  --input   ../../data/real/fashion-mnist/fashion_mnist_X.csv \
-	  --labels  ../../data/real/fashion-mnist/fashion_mnist_y.csv \
-	  --clusters 10 \
-	  --k 15
-
 clean:
-	rm -f $(TARGET) output/labels/*.csv output/benchmarks/*.csv
+	$(CLEAN_CMD)
