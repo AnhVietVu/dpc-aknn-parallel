@@ -15,13 +15,11 @@
 
 /* ─── Tham số thuật toán mặc định ──────────────────────────────────────── */
 // Đường dẫn mặc định của file dữ liệu và nhãn (có thể sửa ở đây để chạy không cần đối số dòng lệnh)
-#define DEFAULT_INPUT_FILE  "../data/real/fashion-mnist/fashion_mnist_X.csv"
-#define DEFAULT_LABEL_FILE  "../data/real/fashion-mnist/fashion_mnist_y.csv"
+#define DEFAULT_INPUT_FILE  "d:/HUST/2025.2/LTSS/pov_dataX.csv"
+#define DEFAULT_LABEL_FILE  "d:/HUST/2025.2/LTSS/pov_dataY.csv"
 
-#define DEFAULT_N_CLUSTERS  10
-#define DEFAULT_K           15
-
-/* ─── Cấu hình OpenMP ──────────────────────────────────────────────────── */
+#define DEFAULT_N_CLUSTERS  3
+#define DEFAULT_K           11
 /*  0 = dùng tất cả lõi khả dụng (omp_get_max_threads)                     */
 #define OMP_N_THREADS   16
 #define OMP_CHUNK_SIZE  64
