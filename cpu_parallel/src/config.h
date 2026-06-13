@@ -15,11 +15,11 @@
 
 /* ─── Tham số thuật toán mặc định ──────────────────────────────────────── */
 // Đường dẫn mặc định của file dữ liệu và nhãn (có thể sửa ở đây để chạy không cần đối số dòng lệnh)
-#define DEFAULT_INPUT_FILE  "d:/HUST/2025.2/LTSS/pov_dataX.csv"
-#define DEFAULT_LABEL_FILE  "d:/HUST/2025.2/LTSS/pov_dataY.csv"
+#define DEFAULT_INPUT_FILE  "d:/HUST/2025.2/LTSS/mouse_dataX_without_noise.csv"
+#define DEFAULT_LABEL_FILE  "d:/HUST/2025.2/LTSS/mouse_dataY_without_noise.csv"
 
 #define DEFAULT_N_CLUSTERS  3
-#define DEFAULT_K           11
+#define DEFAULT_K           29
 /*  0 = dùng tất cả lõi khả dụng (omp_get_max_threads)                     */
 #define OMP_N_THREADS   16
 #define OMP_CHUNK_SIZE  64
